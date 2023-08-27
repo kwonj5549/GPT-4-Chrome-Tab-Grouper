@@ -1,0 +1,77 @@
+{
+  "name": "group-tab-ai-extension",
+  "displayName": "Group Tab AI extension",
+  "version": "1.4.1",
+  "description": "Is a browser extension that uses advanced AI technology powered by ChatGPT to group your browser tabs into logical categories.",
+  "author": "zhixuan2333",
+  "scripts": {
+    "dev": "sh ./script/version.sh && plasmo dev",
+    "dev:edge": "pnpm dev --target=edge-mv3",
+    "build": "sh ./script/version.sh && plasmo build",
+    "build:edge": "pnpm build --target=edge-mv3",
+    "debug": "plasmo dev --verbose",
+    "package": "plasmo package",
+    "package:edge": "pnpm package --target=edge-mv3",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx ."
+  },
+  "dependencies": {
+    "@plasmohq/messaging": "^0.1.7",
+    "@plasmohq/storage": "^1.3.1",
+    "plasmo": "0.67.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sh": "^0.0.3",
+    "tabler-icons-react": "^1.56.0"
+  },
+  "devDependencies": {
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.3",
+    "@types/chrome": "0.0.210",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "2.8.3",
+    "typescript": "4.9.4"
+  },
+  "manifest": {
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "assets/images/*.png",
+          "assets/gif/*.gif"
+        ],
+        "matches": []
+      }
+    ],
+    "host_permissions": [
+      "https://api.openai.com/*/*"
+    ],
+    "permissions": [
+      "tabs",
+      "tabGroups"
+    ],
+    "commands": {
+      "all-tabs": {
+        "suggested_key": {
+          "default": "Alt+Q",
+          "mac": "Alt+Q"
+        },
+        "description": "Regrouping all tabs."
+      },
+      "ungroup-all-tabs": {
+        "suggested_key": {
+          "default": "Alt+A",
+          "mac": "Alt+A"
+        },
+        "description": "Ungrouping all tabs."
+      }
+    }
+  }
+}
